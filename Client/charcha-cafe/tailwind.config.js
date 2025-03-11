@@ -7,7 +7,12 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'custom-purple': '#9f86b0', // Replace with the exact hex if necessary
+      },
+    },
   },
   plugins: [daisyUi],
 }
+
