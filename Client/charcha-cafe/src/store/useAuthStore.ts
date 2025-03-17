@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { axiosInstance } from "../lib/axios";
-import { AuthStore, initialStateType } from "../lib/types";
+import { AuthStore, initialStateType, loginStateType } from "../lib/types";
 import toast from "react-hot-toast";
 
 
@@ -35,20 +35,20 @@ export const useAuthStore = create<AuthStore>((set) => ({
         }
       },
     
-    //   login: async (data) => {
-    //     set({ isLoggingIn: true });
-    //     try {
-    //       const res = await axiosInstance.post("/auth/login", data);
-    //       set({ authUser: res.data });
-    //       toast.success("Logged in successfully");
+      login: async (data) => {
+        set({ isLoggingIn: true });
+        try {
+          const res = await axiosInstance.post("/auth/login", data);
+          set({ authUser: res.data });
+          toast.success("Logged in successfully");
     
-    //       get().connectSocket();
-    //     } catch (error) {
-    //       toast.error(error.response.data.message);
-    //     } finally {
-    //       set({ isLoggingIn: false });
-    //     }
-    //   },
+          // get().connectSocket();
+        } catch (error: any) {
+          toast.error(error.response.data.message);
+        } finally {
+          set({ isLoggingIn: false });
+        }
+      },
     
     //   logout: async () => {
     //     try {
