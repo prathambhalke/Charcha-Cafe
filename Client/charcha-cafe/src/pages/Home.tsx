@@ -1,6 +1,6 @@
 const HomePage = () => {
   return (
-    <div>
+    <div className="container h-screen w-full flex justify-center items-center">
       HomePage
     </div>
   )

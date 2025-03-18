@@ -7,6 +7,7 @@ export interface AuthStore {
   checkAuth: () => void;
   signup: (data: initialStateType) => void;
   login: (data: loginStateType) => void;
+  logout: () => void;
 }
 
 export type authImagePatternType = {
