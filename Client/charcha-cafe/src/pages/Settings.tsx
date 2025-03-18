@@ -1,6 +1,6 @@
 const SettingsPage = () => {
   return (
-    <div>
+    <div className="container h-screen w-full flex justify-center items-center">
       SettingsPage
     </div>
   )
