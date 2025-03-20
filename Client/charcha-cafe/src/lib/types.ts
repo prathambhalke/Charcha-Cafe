@@ -27,3 +27,7 @@ export type loginStateType = {
   email: string;
   password: string;
 };
+export interface themeType {
+  theme: string;
+  setTheme: (theme: string) => void;
+}

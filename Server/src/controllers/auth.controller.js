@@ -1,6 +1,7 @@
 const generateToken = require("../lib/utils");
 const User = require("../models/user.model.js");
 const bcrypt = require("bcryptjs");
+const cloudinary = require("../lib/cloudinary.js");
 
 const signup = async (req, res) => {
   const { fullName, email, password } = req.body;
