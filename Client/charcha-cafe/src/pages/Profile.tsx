@@ -6,7 +6,7 @@ const ProfilePage = () => {
   const [selectedImg, setSelectedImage] = useState<string | ArrayBuffer | null>(null)
   const { authUser, isUpdatingProfile, updateProfile } = useAuthStore();
 
-  const handleImageUpload = (e) => {
+  const handleImageUpload = (e: any) => {
     const file = e.target.files[0];
     let reader = new FileReader();
     reader.readAsDataURL(file)
