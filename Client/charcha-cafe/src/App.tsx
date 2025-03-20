@@ -9,10 +9,11 @@ import ProfilePage from "./pages/Profile"
 
 import { useEffect } from "react"
 import { useAuthStore } from "./store/useAuthStore"
+import { useThemeStore } from "./store/useThemeStore"
 
 function App() {
   const { authUser, checkAuth, isCheckingAuth } = useAuthStore();
-
+  const {theme} = useThemeStore();
   useEffect(() => {
     checkAuth();
   }, [checkAuth])
@@ -25,7 +26,7 @@ function App() {
   )
 
   return (
-    <div>
+    <div data-theme={theme}>
       <Navbar />
       <Routes>
         <Route path="/" element={authUser ? <HomePage /> : <Navigate to="/login" />} />
