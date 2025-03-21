@@ -4,7 +4,7 @@ export interface AuthStore {
   isLoggingIn: boolean;
   isUpdatingProfile: boolean;
   isCheckingAuth: boolean;
-  onlineUsers: [];
+  onlineUsers:[],
   checkAuth: () => void;
   signup: (data: initialStateType) => void;
   login: (data: loginStateType) => void;
@@ -48,7 +48,7 @@ export type usersType = {
   createdAt: string;
   updatedAt: string;
   __v?: number;
-};
+}
 export interface ChatStore {
   messages: any[];
   users: usersType[];
