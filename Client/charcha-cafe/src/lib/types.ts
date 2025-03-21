@@ -8,7 +8,7 @@ export interface AuthStore {
   signup: (data: initialStateType) => void;
   login: (data: loginStateType) => void;
   logout: () => void;
-  updateProfile: (file:{}) => void;
+  updateProfile: (file: {}) => void;
 }
 
 export type authImagePatternType = {
@@ -31,3 +31,10 @@ export interface themeType {
   theme: string;
   setTheme: (theme: string) => void;
 }
+export type previewImagesObjectType = {
+  id: number;
+  content: string;
+  isSent: boolean;
+};
+
+export type previewImagesType = previewImagesObjectType[];
