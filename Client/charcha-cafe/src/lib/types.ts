@@ -4,6 +4,7 @@ export interface AuthStore {
   isLoggingIn: boolean;
   isUpdatingProfile: boolean;
   isCheckingAuth: boolean;
+  onlineUsers: [];
   checkAuth: () => void;
   signup: (data: initialStateType) => void;
   login: (data: loginStateType) => void;
@@ -38,3 +39,28 @@ export type previewImagesObjectType = {
 };
 
 export type previewImagesType = previewImagesObjectType[];
+
+export type usersType = {
+  _id: string;
+  fullName?: string;
+  email?: string;
+  profilePic: string;
+  createdAt: string;
+  updatedAt: string;
+  __v?: number;
+};
+export interface ChatStore {
+  messages: any[];
+  users: usersType[];
+  selectedUser: any;
+  isUsersLoading: boolean;
+  isMessagesLoading: boolean;
+
+  // Adjust the type of getMessages to include userId as an argument
+  getUsers: () => void;
+  getMessages: (userId: string) => Promise<void>; // Fix the signature here
+  setSelectedUser: (user: usersType) => void;
+  sendMessage: (d:any) => Promise<void>
+  subscribeToMessages: () => void;
+  unsubscribeFromMessages: () => void;
+}

@@ -32,7 +32,6 @@ const ProfilePage = () => {
             <div className="relative">
               <img
                 src={selectedImg || authUser.profilePic || "/avatar.png"}
-                // src={"/avatar.png"}
                 alt="Profile"
                 className="size-32 rounded-full object-cover border-4 "
               />

@@ -4,22 +4,24 @@ const messageSchema = new mongoose.Schema(
   {
     senderId: {
       type: mongoose.Schema.Types.ObjectId,
-      ref:"User",
+      ref: "User",
       required: true,
     },
     receiverId: {
       type: mongoose.Schema.Types.ObjectId,
-      ref:"User",
+      ref: "User",
       required: true,
     },
     text: {
-      type: "string",
+      type: String,
     },
     image: {
-      type: "string",
+      type: String,
     },
   },
   { timestamps: true }
 );
-let Message = mongoose.model("Message", messageSchema);
-module.exports = Message;
+
+const messages = mongoose.model("Message", messageSchema);
+
+module.exports = messages;
