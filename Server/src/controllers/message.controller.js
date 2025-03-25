@@ -1,6 +1,7 @@
 const User = require("../models/user.model.js");
 const Message = require("../models/message.model.js");
 const cloudinary = require("cloudinary");
+const { getReceiverSocketId } = require("../lib/socket.js");
 
 const getUsersForSidebar = async (req, res) => {
   try {
@@ -54,10 +55,10 @@ const sendMessages = async (req, res) => {
 
     await newMessage.save();
 
-    // const receiverSocketId = getReceiverSocketId(receiverId);
-    // if (receiverSocketId) {
-    //   io.to(receiverSocketId).emit("newMessage", newMessage);
-    // }
+    const receiverSocketId = getReceiverSocketId(receiverId);
+    if (receiverSocketId) {
+      io.to(receiverSocketId).emit("newMessage", newMessage);
+    }
 
     res.status(201).json(newMessage);
   } catch (error) {

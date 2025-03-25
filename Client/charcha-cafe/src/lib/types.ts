@@ -1,15 +1,24 @@
+import { io, Socket } from "socket.io-client"
+interface User {
+  id: string;
+  name: string;
+}
+
 export interface AuthStore {
   authUser: any;
   isSigningUp: boolean;
   isLoggingIn: boolean;
   isUpdatingProfile: boolean;
   isCheckingAuth: boolean;
-  onlineUsers: [];
+  onlineUsers: User[]; // Array of User objects
+  socket: Socket | null; // socket can now be a Socket object or null
   checkAuth: () => void;
   signup: (data: initialStateType) => void;
   login: (data: loginStateType) => void;
   logout: () => void;
   updateProfile: (file: {}) => void;
+  connectSocket: () => void;
+  disconnectSocket: () => void;
 }
 
 export type authImagePatternType = {
@@ -28,10 +37,12 @@ export type loginStateType = {
   email: string;
   password: string;
 };
+
 export interface themeType {
   theme: string;
   setTheme: (theme: string) => void;
-}
+};
+
 export type previewImagesObjectType = {
   id: number;
   content: string;
@@ -49,6 +60,7 @@ export type usersType = {
   updatedAt: string;
   __v?: number;
 };
+
 export interface ChatStore {
   messages: any[];
   users: usersType[];
@@ -56,11 +68,10 @@ export interface ChatStore {
   isUsersLoading: boolean;
   isMessagesLoading: boolean;
 
-  // Adjust the type of getMessages to include userId as an argument
   getUsers: () => void;
-  getMessages: (userId: string) => Promise<void>; // Fix the signature here
+  getMessages: (userId: string) => Promise<void>;
   setSelectedUser: (user: usersType) => void;
-  sendMessage: (d:any) => Promise<void>
+  sendMessage: (d: any) => Promise<void>;
   subscribeToMessages: () => void;
   unsubscribeFromMessages: () => void;
 }

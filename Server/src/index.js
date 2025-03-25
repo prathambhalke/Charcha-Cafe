@@ -5,7 +5,8 @@ const cors = require("cors");
 let authRoutes = require("./routes/auth.route.js"); // Using require here
 let MessageRoutes = require("./routes/message.route.js"); // Using require here
 const { connectDB } = require("./lib/db.js");
-let app = express();
+const { app, server } = require("./lib/socket.js");
+
 let PORT = process.env.PORT;
 
 app.get("/", (req, res) => {
@@ -22,7 +23,7 @@ app.use(cors({
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", MessageRoutes);
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   console.log(`Port successfully started on ✅: http://localhost:${PORT}`);
   connectDB();
 });

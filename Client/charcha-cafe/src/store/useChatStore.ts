@@ -49,23 +49,35 @@ export const useChatStore = create<ChatStore>((set, get) => ({
   subscribeToMessages: () => {
     const { selectedUser } = get();
     if (!selectedUser) return;
-
-    // const socket = useAuthStore.getState().socket;
-
-    // socket.on("newMessage", (newMessage: any) => {
-    //   const isMessageSentFromSelectedUser =
-    //     newMessage.senderId === selectedUser._id;
-    //   if (!isMessageSentFromSelectedUser) return;
-
-    //   set({
-    //     messages: [...get().messages, newMessage],
-    //   });
-    // });
+  
+    const socket = useAuthStore.getState().socket;
+  
+    // Check if the socket is not null before using it
+    if (!socket) {
+      console.log("Socket is not connected");
+      return;
+    }
+  
+    socket.on("newMessage", (newMessage: any) => {
+      const isMessageSentFromSelectedUser =
+        newMessage.senderId === selectedUser._id;
+      if (!isMessageSentFromSelectedUser) return;
+  
+      set({
+        messages: [...get().messages, newMessage],
+      });
+    });
   },
 
   unsubscribeFromMessages: () => {
-    // const socket = useAuthStore.getState().socket;
-    // socket.off("newMessage");
+    const socket = useAuthStore.getState().socket;
+  
+    // Check if socket is not null before calling .off()
+    if (socket) {
+      socket.off("newMessage");
+    } else {
+      console.log("Socket is not connected");
+    }
   },
     // TODO optimise this later
     setSelectedUser: async (user: any) => {
