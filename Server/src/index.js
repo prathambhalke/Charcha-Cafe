@@ -10,8 +10,10 @@ let path = require("path");
 const { connectDB } = require("./lib/db.js");
 const { app, server } = require("./lib/socket.js");
 
+// Remove the line where you're redefining __dirname
+// const __dirname = path.resolve(); // This line should be removed
+
 let PORT = process.env.PORT;
-const __dirname = path.resolve();
 
 app.get("/", (req, res) => {
   res.send("Server Started on ✅");
