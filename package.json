@@ -5,18 +5,9 @@
   "main": "index.js",
   "scripts": {
     "build": "npm install --prefix Server && npm install --prefix Client && npm run build --prefix Client",
-    "start":"npm run start -- prefix Server",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/prathambhalke/Charcha-Cafe.git"
+    "start":"npm run start -- prefix Server"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/prathambhalke/Charcha-Cafe/issues"
-  },
-  "homepage": "https://github.com/prathambhalke/Charcha-Cafe#readme"
+  "license": "ISC"
 }
