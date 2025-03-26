@@ -7,7 +7,7 @@ import {
   MessageSquare,
   User,
 } from "lucide-react";
-import { ReactElement, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuthStore } from "../store/useAuthStore";
 import AuthImagePattern from "../components/AuthImagePattern";

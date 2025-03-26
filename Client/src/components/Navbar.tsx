@@ -1,4 +1,4 @@
-import { LogOut, Menu, MessageSquare, Settings, User } from "lucide-react"
+import { LogOut, MessageSquare, Settings, User } from "lucide-react"
 import { Link } from "react-router-dom"
 import { useAuthStore } from "../store/useAuthStore"
 
@@ -15,12 +15,6 @@ const Navbar = () => {
             </div>
 
             <div className="flex items-center gap-2">
-                {/* <div className="lg:hidden sm:flex">
-                    {
-                        authUser && <Menu />
-                    }
-                </div> */}
-
                 <div className="flex justify-around">
                     <Link to="/settings" className="flex items-center justify-center">
                         <Settings className="size-5" /> <span className="hidden sm:inline text-xs">Settings</span>

@@ -1,8 +1,4 @@
-import { io, Socket } from "socket.io-client"
-interface User {
-  id: string;
-  name: string;
-}
+import { Socket } from "socket.io-client"
 
 export interface AuthStore {
   authUser: any;
@@ -10,7 +6,7 @@ export interface AuthStore {
   isLoggingIn: boolean;
   isUpdatingProfile: boolean;
   isCheckingAuth: boolean;
-  onlineUsers: User[]; // Array of User objects
+  onlineUsers: string[]; // Array of User objects
   socket: Socket | null; // socket can now be a Socket object or null
   checkAuth: () => void;
   signup: (data: initialStateType) => void;

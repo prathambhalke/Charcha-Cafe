@@ -4,10 +4,14 @@ const cookieParser = require("cookie-parser");
 const cors = require("cors");
 let authRoutes = require("./routes/auth.route.js"); // Using require here
 let MessageRoutes = require("./routes/message.route.js"); // Using require here
+
+let path = require("path");
+
 const { connectDB } = require("./lib/db.js");
 const { app, server } = require("./lib/socket.js");
 
 let PORT = process.env.PORT;
+const __dirname = path.resolve();
 
 app.get("/", (req, res) => {
   res.send("Server Started on ✅");
@@ -22,6 +26,14 @@ app.use(cors({
 
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", MessageRoutes);
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "../Client/dist")));
+
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "../Client", "dist", "index.html"));
+  });
+}
 
 server.listen(PORT, () => {
   console.log(`Port successfully started on ✅: http://localhost:${PORT}`);

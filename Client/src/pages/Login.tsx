@@ -1,4 +1,4 @@
-import { Eye, EyeOff, Loader, Lock, Mail, MessageSquare, User } from "lucide-react";
+import { Eye, EyeOff, Loader, Lock, Mail, MessageSquare } from "lucide-react";
 import { Link } from "react-router-dom";
 import AuthImagePattern from "../components/AuthImagePattern";
 import React, { useState } from "react";

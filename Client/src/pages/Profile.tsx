@@ -1,6 +1,6 @@
-import { Camera, Mail, User } from "lucide-react"
+import { Camera, User } from "lucide-react"
 import { useAuthStore } from "../store/useAuthStore";
-import React, { useState } from "react";
+import { useState } from "react";
 
 const ProfilePage = () => {
   const [selectedImg, setSelectedImage] = useState<string | ArrayBuffer | null>(null)
